@@ -15,7 +15,7 @@ import {
   SiTypescript,
   SiWordpress,
 } from "react-icons/si";
-import { FaMobileAlt, FaAndroid, FaApple } from "react-icons/fa";
+import { FaMobileAlt, FaAndroid } from "react-icons/fa";
 import type { IconType } from "react-icons";
 
 
