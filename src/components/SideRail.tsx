@@ -104,7 +104,7 @@ export function SideRail() {
         <div className="mt-auto flex flex-col gap-3 border-t border-line px-4 py-6">
           <ThemeToggle className="w-full rounded-sm border border-line px-3 py-2.5 text-ink-muted transition hover:border-accent hover:text-accent" />
           <MagneticButton
-            href="/resume.pdf"
+            href={`${import.meta.env.BASE_URL}Mehdi_azzam.pdf`}
             download
             className="flex w-full items-center justify-center gap-2 rounded-sm border border-line bg-panel px-3 py-2.5 text-sm font-medium text-ink shadow-soft transition hover:border-accent hover:text-accent"
           >
@@ -134,7 +134,7 @@ export function SideRail() {
         <div className="flex items-center gap-2">
           <ThemeToggle className="rounded-sm border border-line px-3 py-2 text-ink-muted transition hover:border-accent hover:text-accent" />
           <MagneticButton
-            href="/resume.pdf"
+            href={`${import.meta.env.BASE_URL}Mehdi_azzam.pdf`}
             download
             aria-label="Download resume"
             className="flex h-10 w-10 items-center justify-center rounded-sm border border-line bg-panel text-ink shadow-soft transition hover:border-accent hover:text-accent"

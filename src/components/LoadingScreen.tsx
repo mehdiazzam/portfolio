@@ -38,7 +38,7 @@ export function LoadingScreen({ onComplete, name, role }: LoadingScreenProps) {
         <div className="flex items-center gap-4">
           <div className="flex items-center rounded-sm text-center">
             <img
-              src="/mehdi.jpg"
+              src={`${import.meta.env.BASE_URL}mehdi.jpg`}
               className="h-10 w-10 animate-float rounded-sm border border-accent/30 object-cover ring-1 ring-accent/20"
             />
           </div>

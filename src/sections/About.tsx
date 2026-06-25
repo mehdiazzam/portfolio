@@ -30,7 +30,7 @@ export function About({ locale }: AboutProps) {
               className="surface-card-elevated accent-bar flex flex-col items-center gap-6 px-10 py-16 text-center lg:py-20"
             >
               <img
-                src="/mehdi.jpg"
+                src={`${import.meta.env.BASE_URL}mehdi.jpg`}
                 alt={copy.name}
                 className="h-44 w-44 animate-float rounded-sm object-cover ring-2 ring-accent/40 lg:h-52 lg:w-52"
               />
