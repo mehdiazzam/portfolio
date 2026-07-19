@@ -101,16 +101,9 @@ export function Skills() {
                         <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center text-accent">
                           <Icon size={18} />
                         </span>
-                        <div className="flex min-w-0 flex-1 flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                          <span className="text-sm font-medium tracking-tight text-ink">
-                            {skill.label}
-                          </span>
-                          {skill.proof ? (
-                            <span className="text-xs text-ink-muted sm:text-right">
-                              {skill.proof}
-                            </span>
-                          ) : null}
-                        </div>
+                        <span className="text-sm font-medium tracking-tight text-ink">
+                          {skill.label}
+                        </span>
                       </motion.li>
                     );
                   })}
