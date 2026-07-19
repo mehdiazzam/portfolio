@@ -6,21 +6,23 @@ import { SideRail } from "./components/SideRail";
 import { useAppRoute } from "./hooks/useAppRoute";
 import { useSectionReveal } from "./hooks/useSectionReveal";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
-import type { Locale } from "./lib/content";
 import { content } from "./lib/content";
 import { getProjectById } from "./lib/projects";
 import { ThemeProvider } from "./lib/theme";
 import { HomePage } from "./pages/HomePage";
 import { ProjectDetailsPage } from "./pages/ProjectDetailsPage";
 
+const LOADING_SEEN_KEY = "portfolio-loading-seen";
+
 function App() {
   useSmoothScroll();
   useSectionReveal();
 
   const route = useAppRoute();
-  const [isLoading, setIsLoading] = useState(true);
-  const locale: Locale = "en";
-  const copy = content[locale];
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return sessionStorage.getItem(LOADING_SEEN_KEY) !== "1";
+  });
   const selectedProject =
     route.type === "project" ? getProjectById(route.projectId) : undefined;
 
@@ -47,16 +49,24 @@ function App() {
     };
   }, [route]);
 
+  const handleLoadingComplete = () => {
+    sessionStorage.setItem(LOADING_SEEN_KEY, "1");
+    setIsLoading(false);
+  };
+
   return (
     <ThemeProvider>
       <LazyMotion features={domAnimation}>
         <div className="min-h-screen">
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
           <AnimatePresence>
             {isLoading ? (
               <LoadingScreen
-                name={copy.name}
-                role={copy.role}
-                onComplete={() => setIsLoading(false)}
+                name={content.name}
+                role={content.role}
+                onComplete={handleLoadingComplete}
               />
             ) : null}
           </AnimatePresence>
@@ -65,7 +75,7 @@ function App() {
             {route.type === "project" ? (
               <ProjectDetailsPage project={selectedProject} />
             ) : (
-              <HomePage locale={locale} />
+              <HomePage />
             )}
             <Footer withRailOffset={route.type !== "project"} />
           </div>

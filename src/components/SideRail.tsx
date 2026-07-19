@@ -84,9 +84,17 @@ export function SideRail() {
         <div className="flex flex-col gap-1 px-4 py-8">
           <a
             href="#hero"
-            className="mb-6 px-3 text-xs font-semibold uppercase tracking-[0.28em] text-accent transition hover:text-ink"
+            className="mb-6 flex items-center gap-3 px-3 transition hover:opacity-90"
           >
-            PORTFOLIO
+            <span className="flex h-10 w-10 items-center justify-center rounded-sm border border-accent/40 bg-accent/10 font-display text-sm font-semibold tracking-tight text-accent">
+              MA
+            </span>
+            <span className="flex flex-col leading-tight">
+              <span className="text-sm font-medium text-ink">Portfolio</span>
+              <span className="text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+                Frontend
+              </span>
+            </span>
           </a>
           <nav className="flex flex-col gap-1">
             {navItems.map((item) => (

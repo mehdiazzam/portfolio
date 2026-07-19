@@ -4,22 +4,17 @@ import { Experience } from "../sections/Experience";
 import { Hero } from "../sections/Hero";
 import { Projects } from "../sections/Projects";
 import { Skills } from "../sections/Skills";
-import type { Locale } from "../lib/content";
 
-export interface HomePageProps {
-  locale: Locale;
-}
-
-export function HomePage({ locale }: HomePageProps) {
+export function HomePage() {
   return (
     <div className="rail-offset">
-      <main>
-        <Hero locale={locale} />
-        <About locale={locale} />
-        <Experience locale={locale} />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Experience />
         <Skills />
         <Projects />
-        <Contact locale={locale} />
+        <Contact />
       </main>
     </div>
   );

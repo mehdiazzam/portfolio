@@ -1,55 +1,54 @@
-import { motion } from 'framer-motion'
-import type { Locale } from '../lib/content'
-import { content } from '../lib/content'
+import { motion } from "framer-motion";
+import { content } from "../lib/content";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
-}
+};
 
-type ExperienceProps = {
-  locale: Locale
-}
-
-export function Experience({ locale }: ExperienceProps) {
-  const copy = content[locale]
-
+export function Experience() {
   return (
-    <section id="experience" className="section-zone section-zone-muted reveal-section">
+    <section id="experience" className="section-zone reveal-section">
       <span className="section-index" aria-hidden>
         02
       </span>
       <div className="content-shell">
         <div className="section-header flex flex-col gap-6">
-          <p className="eyebrow">{copy.experience.eyebrow}</p>
+          <p className="eyebrow">{content.experience.eyebrow}</p>
           <div className="copper-divider" />
-          <h2>{copy.experience.headline}</h2>
+          <h2>{content.experience.headline}</h2>
         </div>
 
-        <div className="flex flex-col gap-4">
-          {copy.experience.items.map((item, index) => (
-            <motion.div
+        <ol className="relative ml-3 flex flex-col gap-0 border-l border-accent/35 pl-8 lg:ml-4 lg:pl-10">
+          {content.experience.items.map((item, index) => (
+            <motion.li
               key={item.role}
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.6 }}
-              className="accent-bar flex flex-col gap-3 rounded-sm border border-line bg-panel/70 p-6 sm:flex-row sm:items-start sm:gap-6"
+              viewport={{ once: true, amount: 0.5 }}
+              className="relative pb-12 last:pb-0"
             >
-              <span className="shrink-0 font-display text-sm uppercase tracking-[0.2em] text-accent">
+              <span
+                className="absolute -left-[2.15rem] top-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-accent bg-canvas lg:-left-[2.65rem]"
+                aria-hidden
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              <p className="font-display text-xs uppercase tracking-[0.22em] text-accent">
                 {item.period}
+              </p>
+              <h3 className="mt-2 text-xl font-medium text-ink">{item.role}</h3>
+              <p className="mt-2 max-w-2xl text-base text-ink-muted">
+                {item.description}
+              </p>
+              <span className="mt-3 inline-block font-display text-sm text-accent/40">
+                {String(index + 1).padStart(2, "0")}
               </span>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-lg font-medium text-ink">{item.role}</h3>
-                <p className="text-base text-ink-muted">{item.description}</p>
-              </div>
-              <span className="ml-auto hidden shrink-0 font-display text-lg text-accent/40 sm:inline">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
-  )
+  );
 }

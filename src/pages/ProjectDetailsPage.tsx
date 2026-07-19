@@ -1,9 +1,10 @@
 import { useCallback, useState } from "react";
-import { ArrowLeft, ExternalLink, Expand } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Expand } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { ImageLightbox } from "../components/ui/ImageLightbox";
 import type { Project } from "../lib/projects";
-import { getSectionRoute } from "../routes/projectRoutes";
+import { getProjectNeighbors } from "../lib/projects";
+import { getProjectRoute, getSectionRoute } from "../routes/projectRoutes";
 
 export interface ProjectDetailsPageProps {
   project?: Project;
@@ -22,7 +23,7 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
 
   if (!project) {
     return (
-      <main>
+      <main id="main-content">
         <section className="section-shell min-h-[70vh] justify-center">
           <p className="eyebrow">Project</p>
           <h1>Project not found</h1>
@@ -44,8 +45,10 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
     );
   }
 
+  const { prev, next } = getProjectNeighbors(project.id);
+
   return (
-    <main>
+    <main id="main-content">
       <ImageLightbox
         activeIndex={activeImageIndex}
         images={project.images}
@@ -80,11 +83,13 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
+              role="img"
+              aria-label={`${project.title} cover`}
             >
               <div className="flex h-full min-h-[320px] items-end bg-gradient-to-t from-black/45 via-black/5 to-transparent p-8">
                 <div className="max-w-xl">
                   <p className="text-xs uppercase tracking-[0.28em] text-white/70">
-                    Project Overview
+                    Case study
                   </p>
                   <h2 className="mt-3 text-white">{project.title}</h2>
                 </div>
@@ -135,8 +140,41 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
           </aside>
         </div>
 
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="accent-bar pl-4">
+            <p className="eyebrow">Challenge</p>
+            <p className="mt-4 text-base text-ink-muted">{project.challenge}</p>
+          </div>
+          <div className="accent-bar pl-4">
+            <p className="eyebrow">Decisions</p>
+            <ul className="mt-4 space-y-2 text-sm text-ink-muted">
+              {project.decisions.map((decision) => (
+                <li key={decision} className="flex gap-2">
+                  <span className="text-accent" aria-hidden>
+                    —
+                  </span>
+                  <span>{decision}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="accent-bar pl-4">
+            <p className="eyebrow">Outcomes</p>
+            <ul className="mt-4 space-y-2 text-sm text-ink-muted">
+              {project.outcomes.map((outcome) => (
+                <li key={outcome} className="flex gap-2">
+                  <span className="text-accent" aria-hidden>
+                    —
+                  </span>
+                  <span>{outcome}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="surface-card accent-bar p-8">
+          <div className="accent-bar pl-4">
             <p className="eyebrow">Description</p>
             <div className="mt-6 space-y-4 text-base">
               {project.overview.map((paragraph) => (
@@ -162,7 +200,7 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
                     alt={image.alt}
                     className="h-72 w-full object-cover transition duration-300 group-hover:scale-[1.02]"
                   />
-                  <div className="absolute inset-0 flex items-start justify-end bg-gradient-to-t from-black/35 via-transparent to-black/10 p-4 opacity-0 transition duration-200 group-hover:opacity-100">
+                  <div className="absolute inset-0 flex items-start justify-end bg-gradient-to-t from-black/35 via-transparent to-black/10 p-4 opacity-0 transition duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
                     <span className="inline-flex items-center gap-2 rounded-sm border border-white/15 bg-black/50 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-white">
                       <Expand size={14} />
                       Open
@@ -176,6 +214,44 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
             ))}
           </div>
         </div>
+
+        {prev && next ? (
+          <nav
+            className="mt-12 flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between"
+            aria-label="Project navigation"
+          >
+            <a
+              href={getProjectRoute(prev.id)}
+              className="group inline-flex items-center gap-3 rounded-sm border border-line bg-panel/60 px-5 py-4 text-sm transition hover:border-accent/40 hover:text-accent"
+            >
+              <ArrowLeft
+                size={16}
+                className="shrink-0 text-accent transition group-hover:-translate-x-0.5"
+              />
+              <span className="flex flex-col gap-0.5 text-left">
+                <span className="text-xs uppercase tracking-[0.2em] text-ink-muted">
+                  Previous
+                </span>
+                <span className="font-medium text-ink">{prev.title}</span>
+              </span>
+            </a>
+            <a
+              href={getProjectRoute(next.id)}
+              className="group inline-flex items-center gap-3 rounded-sm border border-line bg-panel/60 px-5 py-4 text-sm transition hover:border-accent/40 hover:text-accent sm:flex-row-reverse"
+            >
+              <ArrowRight
+                size={16}
+                className="shrink-0 text-accent transition group-hover:translate-x-0.5"
+              />
+              <span className="flex flex-col gap-0.5 text-left sm:text-right">
+                <span className="text-xs uppercase tracking-[0.2em] text-ink-muted">
+                  Next
+                </span>
+                <span className="font-medium text-ink">{next.title}</span>
+              </span>
+            </a>
+          </nav>
+        ) : null}
       </section>
     </main>
   );

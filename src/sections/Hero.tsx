@@ -1,16 +1,9 @@
 import { ChevronDown, MapPin } from "lucide-react";
 import { AnimatedText } from "../components/common/AnimatedText";
 import { MagneticButton } from "../components/common/MagneticButton";
-import type { Locale } from "../lib/content";
 import { content } from "../lib/content";
 
-type HeroProps = {
-  locale: Locale;
-};
-
-export function Hero({ locale }: HeroProps) {
-  const copy = content[locale];
-
+export function Hero() {
   return (
     <section
       id="hero"
@@ -23,23 +16,22 @@ export function Hero({ locale }: HeroProps) {
         MA
       </span>
 
-      <div className="content-shell flex flex-1 flex-col justify-center gap-8 pb-16 pt-8 lg:items-start lg:pb-24">
-        <span className="eyebrow inline-flex w-fit rounded-sm border border-accent/30 bg-accent/10 px-4 py-1.5">
-          {copy.role}
-        </span>
-        <div className="border-b-2 border-accent/40 pb-4">
-          <AnimatedText text={copy.name} className="text-ink" />
-        </div>
-        <p className="max-w-xl text-lg flex items-center gap-2">
-          <MapPin size={18} className="shrink-0 text-accent" />
-          {copy.hero.headline}
+      <div className="content-shell flex flex-1 flex-col justify-center gap-7 pb-16 pt-8 lg:items-start lg:pb-24">
+        <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-ink-muted">
+          <MapPin size={14} className="shrink-0 text-accent" />
+          {content.location}
         </p>
+        <div className="border-b border-accent/35 pb-4">
+          <AnimatedText text={content.name} className="text-ink" />
+        </div>
+        <p className="max-w-xl text-lg text-ink-muted">{content.hero.headline}</p>
+        <p className="text-sm text-ink-muted">{content.role}</p>
         <div className="flex flex-wrap gap-4">
           <MagneticButton href="#projects" className="btn-primary">
-            {copy.hero.ctaPrimary}
+            {content.hero.ctaPrimary}
           </MagneticButton>
           <MagneticButton href="#contact" className="btn-ghost">
-            {copy.hero.ctaSecondary}
+            {content.hero.ctaSecondary}
           </MagneticButton>
         </div>
       </div>
@@ -50,7 +42,7 @@ export function Hero({ locale }: HeroProps) {
         aria-label="Scroll to about section"
       >
         <span>Scroll</span>
-        <ChevronDown size={18} className="animate-pulse-copper" />
+        <ChevronDown size={18} />
       </a>
     </section>
   );

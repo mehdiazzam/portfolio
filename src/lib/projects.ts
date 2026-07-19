@@ -10,6 +10,9 @@ export interface Project {
   summary: string;
   description: string;
   overview: string[];
+  challenge: string;
+  decisions: string[];
+  outcomes: string[];
   stack: string[];
   coverBackground: string;
   images: ProjectImage[];
@@ -28,6 +31,19 @@ export const projects: Project[] = [
       "LUXE presents products with an editorial layout—big visuals, clean spacing, and quick access to browse, save, and buy.",
       "The storefront journey is streamlined across key touchpoints: landing → shop discovery → wishlist collection → cart review → checkout confirmation—keeping the UI elegant while maintaining conversion-focused clarity.",
     ],
+    challenge:
+      "Build a luxury storefront that feels editorial without slowing down discovery or checkout—big imagery, clear hierarchy, and a path users trust.",
+    decisions: [
+      "Editorial product cards with generous whitespace instead of dense grids",
+      "Wishlist and cart as first-class destinations, not afterthoughts",
+      "Framer Motion for restrained page transitions; avoid decorative noise",
+      "TanStack Query + Firebase for wishlist and cart state that stays in sync",
+    ],
+    outcomes: [
+      "End-to-end flow from landing through order confirmation",
+      "Responsive layouts that keep product imagery dominant on mobile",
+      "Typed React + TypeScript codebase ready for iteration",
+    ],
     stack: [
       "React",
       "TypeScript",
@@ -43,27 +59,27 @@ export const projects: Project[] = [
       {
         src: `${import.meta.env.BASE_URL}Luxe_home.png`,
         alt: "LUXE home screen with curated editorial hero and quick navigation to shop.",
-        caption: "A premium landing experience designed to set the mood and guide users into the collection.",
+        caption: "Landing experience that sets the mood and guides users into the collection.",
       },
       {
         src: `${import.meta.env.BASE_URL}Luxe_shop.png`,
         alt: "LUXE shop listing view with product browsing and clean category presentation.",
-        caption: "Collection browsing with fast scanning, refined product cards, and a luxury-first layout.",
+        caption: "Collection browsing with fast scanning and refined product cards.",
       },
       {
         src: `${import.meta.env.BASE_URL}Luxe_wishlist.png`,
         alt: "LUXE wishlist screen showing saved products for later consideration.",
-        caption: "Wishlist management focused on clarity—easy review, selection, and next-step action.",
+        caption: "Wishlist management focused on clarity and next-step action.",
       },
       {
         src: `${import.meta.env.BASE_URL}Luxe_cart.png`,
         alt: "LUXE cart screen with selected items, totals, and checkout progression.",
-        caption: "Cart review built for trust and momentum—clear item details and a smooth path to checkout.",
+        caption: "Cart review built for trust and a smooth path to checkout.",
       },
       {
         src: `${import.meta.env.BASE_URL}Luxe_order.png`,
         alt: "LUXE order confirmation and checkout workflow summary.",
-        caption: "Order confirmation designed to communicate success, details, and what happens next.",
+        caption: "Order confirmation that communicates success and what happens next.",
       },
     ],
     link: "https://mehdiazzam.github.io/Luxe/",
@@ -78,6 +94,19 @@ export const projects: Project[] = [
     overview: [
       "Vaultify is a finance dashboard built to help users understand their financial position at a glance through clean data visualization and thoughtful information hierarchy.",
       "It brings together accounts, budgets, savings goals, and transaction history in one place, with a focus on responsive layouts and real-time feedback across key flows.",
+    ],
+    challenge:
+      "Surface dense financial data without overwhelm—accounts, budgets, loans, and goals need clear hierarchy and instant feedback.",
+    decisions: [
+      "Dashboard-first layout with account cards and spending charts above the fold",
+      "Zustand + TanStack Query for local UI state and remote finance data",
+      "Recharts for trends that stay readable in dark and light themes",
+      "Consistent filter/search patterns across transactions and budgets",
+    ],
+    outcomes: [
+      "Unified views for accounts, budgets, loans, goals, and settings",
+      "Dark and light themes with token-driven chrome",
+      "Responsive charts and tables that stay usable on smaller screens",
     ],
     stack: [
       "React",
@@ -96,37 +125,37 @@ export const projects: Project[] = [
       {
         src: `${import.meta.env.BASE_URL}Vaultify_dashboard.png`,
         alt: "Vaultify dark dashboard overview",
-        caption: "Dashboard overview with account cards, recent transactions, and spending analytics.",
+        caption: "Dashboard overview with account cards, transactions, and analytics.",
       },
       {
         src: `${import.meta.env.BASE_URL}Vaultify_transactions.png`,
         alt: "Vaultify transactions page",
-        caption: "Transactions page with search, category filtering, and clear income and expense states.",
+        caption: "Transactions with search, category filtering, and clear income/expense states.",
       },
       {
         src: `${import.meta.env.BASE_URL}Vaultify_loans.png`,
         alt: "Vaultify loans page",
-        caption: "Loans and lending workflow showing borrowed, lent, and repayment progress details.",
+        caption: "Loans workflow showing borrowed, lent, and repayment progress.",
       },
       {
         src: `${import.meta.env.BASE_URL}Vaultify_budget.png`,
         alt: "Vaultify budgets page",
-        caption: "Budget management screen focused on category limits and remaining balance visibility.",
+        caption: "Budget management with category limits and remaining balance.",
       },
       {
         src: `${import.meta.env.BASE_URL}Vaultify_goals.png`,
         alt: "Vaultify savings goals page",
-        caption: "Savings goals area for tracking targets, progress, and fund contributions.",
+        caption: "Savings goals for tracking targets and contributions.",
       },
       {
         src: `${import.meta.env.BASE_URL}Vaultify_settings.png`,
         alt: "Vaultify settings page",
-        caption: "Settings screen covering theme preferences, profile management, and shortcuts.",
+        caption: "Settings for theme, profile, and shortcuts.",
       },
       {
         src: `${import.meta.env.BASE_URL}Vaultify_light.png`,
         alt: "Vaultify light dashboard overview",
-        caption: "Light theme version of the main dashboard with financial summaries and charts.",
+        caption: "Light theme dashboard with financial summaries and charts.",
       },
     ],
     link: "https://mehdiazzam.github.io/Vaultify/",

@@ -1,20 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
-import type { Locale } from "../lib/content";
 import { content } from "../lib/content";
 import { social, socialLinks } from "../lib/social";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
-
-type ContactProps = {
-  locale: Locale;
-};
-
-export function Contact({ locale }: ContactProps) {
-  const copy = content[locale];
+export function Contact() {
   const emailLink = socialLinks.find((link) => link.id === "email")!;
   const profileLinks = socialLinks.filter((link) => link.id !== "email");
   const EmailIcon = emailLink.icon;
@@ -25,82 +13,68 @@ export function Contact({ locale }: ContactProps) {
         05
       </span>
       <div className="content-shell">
-        <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[0.38fr_0.62fr] lg:items-start lg:gap-16">
-          <div className="section-header flex flex-col gap-6 lg:sticky lg:top-24">
+        <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[0.4fr_0.6fr] lg:items-start lg:gap-16">
+          <div className="section-header flex flex-col gap-6">
             <p className="eyebrow">Contact</p>
             <div className="copper-divider" />
-            <h2>{copy.contact.headline}</h2>
-            <p className="max-w-md text-base">{copy.contact.subline}</p>
-            <span className="inline-flex w-fit items-center gap-2 rounded-sm border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.22em] text-accent">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-              {copy.contact.availability}
-            </span>
+            <h2>{content.contact.headline}</h2>
+            <p className="max-w-md text-base">{content.contact.subline}</p>
           </div>
 
-          <div className="flex flex-col gap-5">
-            <motion.a
-              href={emailLink.href}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.5 }}
-              className="group surface-card-elevated accent-bar flex flex-col gap-6 p-8 transition hover:border-accent/50 sm:flex-row sm:items-center sm:justify-between"
+          <div className="flex flex-col gap-4">
+            <a
+              href={`${emailLink.href}?subject=${encodeURIComponent("Project inquiry")}`}
+              className="group accent-bar flex flex-col gap-4 rounded-sm border border-line bg-panel/60 p-6 transition hover:border-accent/40 sm:flex-row sm:items-center sm:justify-between"
             >
-              <div className="flex items-start gap-5">
-                <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-accent/30 bg-accent text-canvas transition group-hover:brightness-110">
-                  <EmailIcon size={24} strokeWidth={1.75} />
+              <div className="flex items-start gap-4">
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-line bg-panel text-accent">
+                  <EmailIcon size={20} strokeWidth={1.75} />
                 </span>
                 <div className="flex flex-col gap-1">
-                  <p className="text-xs uppercase tracking-[0.28em] text-accent">
+                  <p className="text-xs uppercase tracking-[0.22em] text-accent">
                     {emailLink.label}
                   </p>
-                  <p className="break-all text-lg font-medium text-ink">{social.email}</p>
-                  <p className="text-sm text-ink-muted">{copy.contact.responseTime}</p>
+                  <p className="break-all text-base font-medium text-ink">
+                    {social.email}
+                  </p>
+                  <p className="text-sm text-ink-muted">
+                    {content.contact.responseTime}
+                  </p>
                 </div>
               </div>
-              <span className="inline-flex items-center gap-2 self-start rounded-sm bg-accent px-5 py-3 text-sm font-semibold text-canvas transition group-hover:brightness-110 sm:self-center">
-                {copy.contact.emailCta}
-                <ArrowUpRight size={16} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span className="inline-flex items-center gap-2 self-start text-sm font-medium text-accent sm:self-center">
+                {content.contact.emailCta}
+                <ArrowUpRight size={16} />
               </span>
-            </motion.a>
+            </a>
 
-            <div>
-              <p className="mb-4 text-xs uppercase tracking-[0.28em] text-accent">
-                {copy.contact.socialTitle}
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {profileLinks.map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <motion.a
-                      key={item.id}
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      variants={fadeUp}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: true, amount: 0.5 }}
-                      transition={{ delay: index * 0.08 }}
-                      className="group accent-bar flex flex-col gap-4 rounded-sm border border-line bg-panel/70 p-6 transition hover:border-accent/40 hover:bg-panel"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-line bg-panel text-accent transition group-hover:border-accent/40">
-                          <Icon size={20} strokeWidth={1.75} />
-                        </span>
-                        <ArrowUpRight
-                          size={18}
-                          className="text-accent/50 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <p className="font-medium text-ink">{item.label}</p>
-                        <p className="text-sm text-ink-muted">@{item.handle}</p>
-                      </div>
-                    </motion.a>
-                  );
-                })}
-              </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {profileLinks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center gap-3 rounded-sm border border-line bg-panel/40 px-4 py-4 transition hover:border-accent/40"
+                  >
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-line text-accent">
+                      <Icon size={18} strokeWidth={1.75} />
+                    </span>
+                    <span className="flex min-w-0 flex-1 flex-col">
+                      <span className="text-sm font-medium text-ink">{item.label}</span>
+                      <span className="truncate text-xs text-ink-muted">
+                        @{item.handle}
+                      </span>
+                    </span>
+                    <ArrowUpRight
+                      size={16}
+                      className="shrink-0 text-ink-muted transition group-hover:text-accent"
+                    />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
