@@ -1,21 +1,15 @@
-import { About } from "../sections/About";
+import { IntroBoard } from "../sections/IntroBoard";
 import { Contact } from "../sections/Contact";
-import { Experience } from "../sections/Experience";
-import { Hero } from "../sections/Hero";
 import { Projects } from "../sections/Projects";
 import { Skills } from "../sections/Skills";
 
 export function HomePage() {
   return (
-    <div className="rail-offset">
-      <main id="main-content">
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-    </div>
+    <main id="main-content">
+      <IntroBoard />
+      <Projects />
+      <Skills />
+      <Contact />
+    </main>
   );
 }

@@ -2,7 +2,7 @@ import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Footer } from "./components/Footer";
 import { LoadingScreen } from "./components/LoadingScreen";
-import { SideRail } from "./components/SideRail";
+import { Navbar } from "./components/Navbar";
 import { useAppRoute } from "./hooks/useAppRoute";
 import { useSectionReveal } from "./hooks/useSectionReveal";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
@@ -71,13 +71,13 @@ function App() {
             ) : null}
           </AnimatePresence>
           <div className="relative z-10">
-            {route.type !== "project" ? <SideRail /> : null}
+            {route.type !== "project" ? <Navbar /> : null}
             {route.type === "project" ? (
               <ProjectDetailsPage project={selectedProject} />
             ) : (
               <HomePage />
             )}
-            <Footer withRailOffset={route.type !== "project"} />
+            <Footer />
           </div>
         </div>
       </LazyMotion>

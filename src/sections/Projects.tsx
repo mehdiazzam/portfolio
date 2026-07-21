@@ -59,9 +59,9 @@ export function Projects() {
     project?.coverBackground.replace(/^url\(["']?|["']?\)$/g, "");
 
   return (
-    <section id="projects" className="section-zone reveal-section">
+    <section id="projects" className="section-zone section-zone-muted reveal-section scroll-mt-nav">
       <span className="section-index" aria-hidden>
-        04
+        03
       </span>
       <div className="content-shell">
         <div className="section-header flex flex-col gap-6">
@@ -169,16 +169,26 @@ export function Projects() {
                       ))}
                     </div>
                   </div>
-                  <div className="flex flex-wrap">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-ghost inline-flex items-center gap-2"
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={openDetails}
+                      className="btn-primary inline-flex items-center gap-2"
                     >
-                      Live
-                      <ExternalLink size={14} />
-                    </a>
+                      View details
+                      <ArrowRight size={16} />
+                    </button>
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-ghost inline-flex items-center gap-2"
+                      >
+                        Live
+                        <ExternalLink size={14} />
+                      </a>
+                    ) : null}
                     {project.repo ? (
                       <a
                         href={project.repo}

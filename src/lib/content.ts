@@ -3,19 +3,31 @@ export const content = {
   role: "Frontend Developer",
   location: "Syria · Remote",
   hero: {
-    headline: "I build responsive web apps and landing pages with React and TypeScript.",
-    ctaPrimary: "View projects",
-    ctaSecondary: "Contact",
+    greeting: "Hi, I'm",
+    highlightName: "Mehdi",
+    lastName: "Azzam",
+    headline:
+      "I build responsive web apps and landing pages with React and TypeScript. Clean code, clear UX, and interfaces that hold up in production.",
+    features: [
+      {
+        icon: "code",
+        label: "Clean & maintainable code with React and TypeScript",
+      },
+      {
+        icon: "responsive",
+        label: "Responsive layouts that work across devices",
+      },
+      {
+        icon: "bolt",
+        label: "Fast, accessible interfaces",
+      },
+    ],
   },
   about: {
-    eyebrow: "Bio",
-    headline:
-      "Frontend developer focused on modern, responsive web apps with clean code and clear UX.",
-    body: "I work mainly with React and TypeScript. I care about readable code, solid layout, and interfaces that stay usable in production. Always learning and improving.",
-    highlights: [
-      "React and TypeScript for product UI",
-      "Responsive layouts and performance basics",
-      "Accessible, reusable components",
+    eyebrow: "About Me",
+    body: "Passionate about building modern web apps with React, TypeScript, and Tailwind CSS. I focus on readable code, solid layout, and shipping interfaces that stay usable in production.",
+    stats: [
+      { icon: "years", label: "3+ Years Experience" },
     ],
   },
   experience: {
@@ -23,23 +35,39 @@ export const content = {
     headline: "Freelance work and building my own product frontend.",
     items: [
       {
-        period: "1.5 years",
+        period: "2023 — Present",
         role: "Freelance Frontend Developer",
         description:
           "Landing pages and client websites—responsive layouts, clear structure, and polished UI.",
       },
       {
-        period: "8 months · ongoing",
+        period: "2024 — Present",
         role: "Personal Product — Frontend",
         description:
           "Building the frontend for my own product. UI and interaction work still in progress.",
       },
     ],
   },
+  education: {
+    eyebrow: "Education",
+    items: [
+      {
+        period: "2022 — Present",
+        title: "Information Technology",
+        place: "SUV University",
+        icon: "grad",
+      },
+      {
+        period: "2021",
+        title: "High School Degree",
+        place: "General Secondary Education",
+        icon: "book",
+      },
+    ],
+  },
   contact: {
     headline: "Let's talk about your next frontend project.",
-    subline:
-      "Open for landing pages, marketing sites, and product UI work.",
+    subline: "Open for landing pages, marketing sites, and product UI work.",
     emailCta: "Email me",
     socialTitle: "Elsewhere",
     responseTime: "Usually reply within a day.",

@@ -1,14 +1,18 @@
 import { ArrowUpRight } from "lucide-react";
 import { content } from "../lib/content";
-import { social, socialLinks } from "../lib/social";
+import { contactLinks } from "../lib/social";
 
 export function Contact() {
-  const emailLink = socialLinks.find((link) => link.id === "email")!;
-  const profileLinks = socialLinks.filter((link) => link.id !== "email");
+  const emailLink = contactLinks.find((link) => link.id === "email")!;
+  const whatsappLink = contactLinks.find((link) => link.id === "whatsapp")!;
   const EmailIcon = emailLink.icon;
+  const WhatsAppIcon = whatsappLink.icon;
 
   return (
-    <section id="contact" className="section-zone section-zone-muted reveal-section">
+    <section
+      id="contact"
+      className="section-zone section-zone-muted reveal-section scroll-mt-nav"
+    >
       <span className="section-index" aria-hidden>
         05
       </span>
@@ -23,7 +27,7 @@ export function Contact() {
 
           <div className="flex flex-col gap-4">
             <a
-              href={`${emailLink.href}?subject=${encodeURIComponent("Project inquiry")}`}
+              href={emailLink.href}
               className="group accent-bar flex flex-col gap-4 rounded-sm border border-line bg-panel/60 p-6 transition hover:border-accent/40 sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="flex items-start gap-4">
@@ -35,7 +39,7 @@ export function Contact() {
                     {emailLink.label}
                   </p>
                   <p className="break-all text-base font-medium text-ink">
-                    {social.email}
+                    {emailLink.handle}
                   </p>
                   <p className="text-sm text-ink-muted">
                     {content.contact.responseTime}
@@ -48,34 +52,28 @@ export function Contact() {
               </span>
             </a>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {profileLinks.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-center gap-3 rounded-sm border border-line bg-panel/40 px-4 py-4 transition hover:border-accent/40"
-                  >
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-line text-accent">
-                      <Icon size={18} strokeWidth={1.75} />
-                    </span>
-                    <span className="flex min-w-0 flex-1 flex-col">
-                      <span className="text-sm font-medium text-ink">{item.label}</span>
-                      <span className="truncate text-xs text-ink-muted">
-                        @{item.handle}
-                      </span>
-                    </span>
-                    <ArrowUpRight
-                      size={16}
-                      className="shrink-0 text-ink-muted transition group-hover:text-accent"
-                    />
-                  </a>
-                );
-              })}
-            </div>
+            <a
+              href={whatsappLink.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex items-center gap-3 rounded-sm border border-line bg-panel/40 px-4 py-4 transition hover:border-accent/40"
+            >
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-line text-accent">
+                <WhatsAppIcon size={18} />
+              </span>
+              <span className="flex min-w-0 flex-1 flex-col">
+                <span className="text-sm font-medium text-ink">
+                  {whatsappLink.label}
+                </span>
+                <span className="truncate text-xs text-ink-muted">
+                  {whatsappLink.handle}
+                </span>
+              </span>
+              <ArrowUpRight
+                size={16}
+                className="shrink-0 text-ink-muted transition group-hover:text-accent"
+              />
+            </a>
           </div>
         </div>
       </div>

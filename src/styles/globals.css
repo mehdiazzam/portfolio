@@ -9,28 +9,27 @@
 @tailwind utilities;
 
 :root {
-  --color-canvas: 240 20% 5%;
-  --color-panel: 240 14% 10%;
-  --color-ink: 38 25% 94%;
-  --color-ink-muted: 240 8% 62%;
-  --color-line: 240 10% 20%;
-  --color-accent: 28 85% 58%;
-  --color-accent-2: 18 55% 38%;
-  --color-glow: 28 90% 65%;
-  --rail-width: 12rem;
-  --mobile-dock-height: 4.5rem;
+  --color-canvas: 0 0% 7%;
+  --color-panel: 0 0% 10%;
+  --color-ink: 0 0% 96%;
+  --color-ink-muted: 0 0% 62%;
+  --color-line: 0 0% 18%;
+  --color-accent: 32 100% 50%;
+  --color-accent-2: 24 80% 40%;
+  --color-glow: 32 100% 55%;
+  --nav-height: 4rem;
   color-scheme: dark;
 }
 
 [data-theme='light'] {
-  --color-canvas: 210 18% 96%;
-  --color-panel: 210 14% 92%;
-  --color-ink: 220 28% 12%;
-  --color-ink-muted: 220 10% 42%;
-  --color-line: 210 12% 80%;
-  --color-accent: 26 78% 42%;
-  --color-accent-2: 18 45% 32%;
-  --color-glow: 28 80% 48%;
+  --color-canvas: 210 16% 96%;
+  --color-panel: 210 12% 92%;
+  --color-ink: 220 24% 12%;
+  --color-ink-muted: 220 8% 40%;
+  --color-line: 210 10% 80%;
+  --color-accent: 28 90% 42%;
+  --color-accent-2: 24 70% 34%;
+  --color-glow: 28 90% 48%;
   color-scheme: light;
 }
 
@@ -60,17 +59,15 @@ body::before {
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  background-image:
-    radial-gradient(1100px 700px at 8% -8%, hsl(var(--color-accent) / 0.16), transparent 58%),
-    radial-gradient(900px 600px at 92% 4%, hsl(var(--color-accent-2) / 0.14), transparent 55%),
-    linear-gradient(135deg, hsl(var(--color-canvas)), hsl(var(--color-panel)));
+  background:
+    radial-gradient(900px 500px at 10% -10%, hsl(var(--color-accent) / 0.08), transparent 55%),
+    hsl(var(--color-canvas));
 }
 
 [data-theme='light'] body::before {
-  background-image:
-    radial-gradient(1100px 700px at 12% -10%, hsl(var(--color-accent) / 0.14), transparent 60%),
-    radial-gradient(850px 580px at 88% 2%, hsl(var(--color-accent-2) / 0.12), transparent 58%),
-    linear-gradient(135deg, hsl(var(--color-canvas)) 0%, hsl(var(--color-panel)) 50%, hsl(var(--color-canvas)) 100%);
+  background:
+    radial-gradient(900px 500px at 12% -10%, hsl(var(--color-accent) / 0.1), transparent 58%),
+    hsl(var(--color-canvas));
 }
 
 body::after {
@@ -168,96 +165,38 @@ body::after {
 
 @layer components {
   .section-shell {
-    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-28 lg:px-12 lg:py-32;
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-16 lg:px-10 lg:py-20;
   }
 
   .content-shell {
-    @apply relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-6 py-28 lg:px-16 lg:py-32;
+    @apply relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-16 lg:px-10 lg:py-20;
   }
 
-  .rail-offset {
-    padding-left: 0;
-    padding-bottom: var(--mobile-dock-height);
-  }
-
-  @media (min-width: 1024px) {
-    .rail-offset {
-      padding-left: var(--rail-width);
-      padding-bottom: 0;
-    }
-  }
-
-  .mobile-dock {
-    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
-  }
-
-  .glass-panel {
-    background: linear-gradient(
-      145deg,
-      hsl(var(--color-panel) / 0.85),
-      hsl(var(--color-panel) / 0.55)
-    );
-    border: 1px solid hsl(var(--color-line) / 0.6);
-    border-top: 2px solid hsl(var(--color-accent) / 0.7);
-    box-shadow: 0 24px 64px -48px hsl(var(--color-ink) / 0.55);
-    backdrop-filter: blur(14px);
+  .scroll-mt-nav {
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
   }
 
   .eyebrow {
-    @apply text-xs uppercase tracking-[0.4em] text-accent;
+    @apply text-xs uppercase tracking-[0.32em] text-accent;
   }
 
   .section-zone {
     @apply relative overflow-hidden;
   }
 
-  .section-zone-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(
-        125deg,
-        hsl(var(--color-accent) / 0.08) 0%,
-        transparent 42%,
-        hsl(var(--color-accent-2) / 0.06) 100%
-      );
-  }
-
   .section-zone-muted {
-    background: hsl(var(--color-panel) / 0.35);
-    border-top: 1px solid hsl(var(--color-line) / 0.5);
-    border-bottom: 1px solid hsl(var(--color-line) / 0.5);
-  }
-
-  .section-zone-inverted {
-    background: hsl(var(--color-ink));
-    color: hsl(var(--color-canvas));
-    border-top: 2px solid hsl(var(--color-accent) / 0.5);
-  }
-
-  .section-zone-inverted h2,
-  .section-zone-inverted h3,
-  .section-zone-inverted h4 {
-    color: hsl(var(--color-canvas));
-  }
-
-  .section-zone-inverted p {
-    color: hsl(var(--color-canvas) / 0.72);
-  }
-
-  .section-zone-inverted .eyebrow {
-    color: hsl(var(--color-accent));
+    background: hsl(var(--color-panel) / 0.45);
+    border-top: 1px solid hsl(var(--color-line) / 0.55);
+    border-bottom: 1px solid hsl(var(--color-line) / 0.55);
   }
 
   .section-index {
-    @apply pointer-events-none absolute right-4 top-8 select-none font-display font-semibold leading-none text-accent/10 lg:right-12 lg:top-12;
-    font-size: clamp(4rem, 12vw, 9rem);
+    @apply pointer-events-none absolute right-4 top-6 select-none font-display font-semibold leading-none text-accent/[0.08] lg:right-10 lg:top-8;
+    font-size: clamp(4rem, 12vw, 8rem);
   }
 
   .section-header {
-    @apply relative flex flex-col gap-4;
+    @apply relative flex flex-col gap-3;
   }
 
   .accent-bar {
@@ -280,26 +219,15 @@ body::after {
   }
 
   .btn-primary {
-    @apply rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-canvas shadow-glow transition hover:brightness-110;
+    @apply rounded-sm bg-accent px-5 py-2.5 text-sm font-semibold text-canvas transition hover:brightness-110;
   }
 
   .btn-ghost {
-    @apply rounded-sm border border-line bg-panel/60 px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent hover:text-accent;
-  }
-
-  .text-gradient-copper {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--color-accent)),
-      hsl(var(--color-accent-2))
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    @apply rounded-sm border border-line bg-transparent px-5 py-2.5 text-sm font-semibold text-ink transition hover:border-accent hover:text-accent;
   }
 
   .copper-divider {
-    @apply h-1 w-8 rounded-full bg-accent;
+    @apply h-0.5 w-10 bg-accent;
   }
 
   .field-inverted {
