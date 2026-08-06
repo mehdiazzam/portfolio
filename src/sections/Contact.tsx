@@ -13,11 +13,14 @@ export function Contact() {
       id="contact"
       className="section-zone section-zone-muted reveal-section scroll-mt-nav"
     >
-      <span className="section-index" aria-hidden>
-        05
-      </span>
       <div className="content-shell">
-        <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[0.4fr_0.6fr] lg:items-start lg:gap-16">
+        <span
+          className="pointer-events-none absolute -right-0 select-none font-display text-[7rem] font-semibold leading-none text-accent/[0.08] lg:text-[9rem]"
+          aria-hidden
+        >
+          05
+        </span>
+        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[0.4fr_0.6fr] lg:items-start lg:gap-10">
           <div className="section-header flex flex-col gap-6">
             <p className="eyebrow">Contact</p>
             <div className="copper-divider" />

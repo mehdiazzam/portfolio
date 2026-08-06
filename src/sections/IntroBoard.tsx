@@ -41,23 +41,23 @@ const heroSocial = [
 
 export function IntroBoard() {
   return (
-    <section id="hero" className="section-zone pt-20">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-10 lg:grid-cols-2 lg:gap-12 lg:px-10 lg:py-14">
+    <section id="hero" className="section-zone section-zone-muted mobile-section-page pt-20">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 sm:px-5 lg:grid-cols-2 lg:gap-12 lg:px-10 lg:py-14">
         {/* Intro */}
         <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
-            <div className="w-full max-w-[11.5rem] shrink-0 overflow-hidden rounded-sm border border-line bg-panel">
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-8">
+            <div className="mx-auto flex w-full max-w-[10.75rem] flex-col overflow-hidden rounded-sm border border-line bg-panel shadow-[0_12px_30px_-20px_rgba(0,0,0,0.65)] sm:mx-0 sm:shrink-0 sm:max-w-[11.5rem]">
               <img
                 src={`${import.meta.env.BASE_URL}mehdi.jpg`}
                 alt={content.name}
                 className="aspect-square w-full object-cover"
               />
-              <p className="border-t border-accent bg-panel px-3 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
+              <p className="border-t border-accent/70 bg-panel px-3 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
                 {content.name}
               </p>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 text-center sm:text-left">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
                 {content.role}
               </p>

@@ -2,6 +2,7 @@ import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Footer } from "./components/Footer";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { MobileBottomNav } from "./components/MobileBottomNav";
 import { Navbar } from "./components/Navbar";
 import { useAppRoute } from "./hooks/useAppRoute";
 import { useSectionReveal } from "./hooks/useSectionReveal";
@@ -70,8 +71,13 @@ function App() {
               />
             ) : null}
           </AnimatePresence>
-          <div className="relative z-10">
-            {route.type !== "project" ? <Navbar /> : null}
+          <div className="relative z-10 lg:pl-64">
+            {route.type !== "project" ? (
+              <>
+                <Navbar />
+                <MobileBottomNav />
+              </>
+            ) : null}
             {route.type === "project" ? (
               <ProjectDetailsPage project={selectedProject} />
             ) : (

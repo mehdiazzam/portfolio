@@ -13,10 +13,10 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line/70 bg-panel/30 py-6">
+    <footer className="hidden sm:block border-t border-line/70 bg-panel/30 py-6">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-5 lg:flex-row lg:px-10">
         <span className="text-sm text-ink-muted">
-          {year} Mehdi Azzam.
+          Mehdi Azzam {year}.
         </span>
         <div className="flex items-center gap-2">
           {footerSocial.map((item) => {

@@ -41,7 +41,7 @@ export const content = {
           "Landing pages and client websites—responsive layouts, clear structure, and polished UI.",
       },
       {
-        period: "2024 — Present",
+        period: "2025 — Present",
         role: "Personal Product — Frontend",
         description:
           "Building the frontend for my own product. UI and interaction work still in progress.",

@@ -55,14 +55,14 @@ const itemVariants = {
 
 export function Skills() {
   return (
-    <section
-      id="skills"
-      className="section-zone reveal-section scroll-mt-nav"
-    >
-      <span className="section-index" aria-hidden>
-        04
-      </span>
+    <section id="skills" className="section-zone section-zone-muted reveal-section scroll-mt-nav">
       <div className="content-shell">
+        <span
+          className="pointer-events-none absolute -right-0 select-none font-display text-[7rem] font-semibold leading-none text-accent/[0.08] lg:text-[9rem]"
+          aria-hidden
+        >
+          04
+        </span>
         <div className="section-header max-w-xl">
           <p className="eyebrow">Skills</p>
           <div className="copper-divider" />

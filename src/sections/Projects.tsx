@@ -59,11 +59,17 @@ export function Projects() {
     project?.coverBackground.replace(/^url\(["']?|["']?\)$/g, "");
 
   return (
-    <section id="projects" className="section-zone section-zone-muted reveal-section scroll-mt-nav">
-      <span className="section-index" aria-hidden>
-        03
-      </span>
+    <section
+      id="projects"
+      className="section-zone section-zone-muted reveal-section scroll-mt-nav"
+    >
       <div className="content-shell">
+        <span
+          className="pointer-events-none absolute -right-0 select-none font-display text-[7rem] font-semibold leading-none text-accent/[0.08] lg:text-[9rem]"
+          aria-hidden
+        >
+          03
+        </span>
         <div className="section-header flex flex-col gap-6">
           <p className="eyebrow">Projects</p>
           <div className="copper-divider" />
