@@ -29,7 +29,7 @@ export function Navbar() {
           <div className="flex gap-2">
             <ThemeToggle className="mobile-icon-btn" />
             <a
-              href={`${import.meta.env.BASE_URL}Mehdi_azzam.pdf`}
+              href={`${import.meta.env.BASE_URL}Mehdi_azzam.docx`}
               download
               aria-label="Download CV"
               className="mobile-icon-btn text-accent"
@@ -74,7 +74,7 @@ export function Navbar() {
         <div className="flex flex-col gap-3 px-6 py-6">
           <ThemeToggle className="rounded-sm border border-line px-3 py-2 text-ink-muted transition hover:border-accent hover:text-accent" />
           <a
-            href={`${import.meta.env.BASE_URL}Mehdi_azzam.pdf`}
+            href={`${import.meta.env.BASE_URL}Mehdi_Azzam_CV.docx`}
             download
             className="inline-flex items-center justify-center gap-2 rounded-sm border border-accent px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent"
           >

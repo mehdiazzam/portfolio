@@ -27,7 +27,7 @@ export const content = {
     eyebrow: "About Me",
     body: "Passionate about building modern web apps with React, TypeScript, and Tailwind CSS. I focus on readable code, solid layout, and shipping interfaces that stay usable in production.",
     stats: [
-      { icon: "years", label: "3+ Years Experience" },
+      { icon: "years", label: "2+ Years Experience" },
     ],
   },
   experience: {
@@ -54,7 +54,7 @@ export const content = {
       {
         period: "2022 — Present",
         title: "Information Technology",
-        place: "SUV University",
+        place: "SVU University",
         icon: "grad",
       },
       {

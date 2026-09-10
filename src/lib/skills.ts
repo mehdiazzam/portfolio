@@ -10,24 +10,54 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Interface",
+    title: "Frontend",
     items: [
       { label: "HTML", icon: "html" },
       { label: "CSS", icon: "css" },
       { label: "JavaScript", icon: "javascript" },
       { label: "TypeScript", icon: "typescript" },
       { label: "React", icon: "react" },
+      { label: "Next.js", icon: "nextjs" },
+      { label: "Vite", icon: "vite" },
+      { label: "Responsive UI", icon: "responsive" },
+    ],
+  },
+  {
+    title: "UI & state",
+    items: [
       { label: "Tailwind CSS", icon: "tailwindcss" },
+      { label: "React Query", icon: "reactquery" },
+      { label: "Zustand", icon: "state" },
+      { label: "Redux", icon: "redux" },
+      { label: "Axios", icon: "axios" },
+    ],
+  },
+  {
+    title: "Mobile",
+    items: [
       { label: "React Native", icon: "reactnative" },
       { label: "Mobile UI", icon: "mobile" },
     ],
   },
   {
-    title: "Data & state",
+    title: "Backend basics",
     items: [
-      { label: "REST API", icon: "restapi" },
-      { label: "Firebase", icon: "firebase" },
       { label: "Node.js", icon: "nodejs" },
+      { label: "Express.js", icon: "express" },
+      { label: "REST API", icon: "restapi" },
+      { label: "Authentication", icon: "auth" },
+      { label: "JWT", icon: "jwt" },
+      { label: "CRUD APIs", icon: "crud" },
+    ],
+  },
+  {
+    title: "Data",
+    items: [
+      { label: "Firebase", icon: "firebase" },
+      { label: "MongoDB", icon: "mongodb" },
+      { label: "PostgreSQL", icon: "postgresql" },
+      { label: "MySQL", icon: "mysql" },
+      { label: "Prisma", icon: "prisma" },
       { label: "Python", icon: "python" },
     ],
   },
@@ -35,7 +65,6 @@ export const skillCategories: SkillCategory[] = [
     title: "Delivery",
     items: [
       { label: "Git", icon: "git" },
-      { label: "Linux", icon: "linux" },
       { label: "WordPress", icon: "wordpress" },
       { label: "Notion", icon: "notion" },
     ],

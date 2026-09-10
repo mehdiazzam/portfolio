@@ -82,8 +82,8 @@ export const projects: Project[] = [
         caption: "Order confirmation that communicates success and what happens next.",
       },
     ],
-    link: "https://mehdiazzam.github.io/Luxe/",
-    repo: "https://github.com/mehdiazzam/Luxe",
+    link: "https://mehdiazzam.github.io/LUXE/",
+    repo: "https://github.com/mehdiazzam/LUXE",
   },
   {
     id: "saas",
