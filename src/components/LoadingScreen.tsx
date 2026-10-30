@@ -21,6 +21,8 @@ export function LoadingScreen({ onComplete, name, role }: LoadingScreenProps) {
   return (
     <motion.div
       className="fixed inset-0 z-[60] flex items-center justify-center bg-canvas"
+      role="status"
+      aria-label={`${displayName}, ${role}`}
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.45 } }}
@@ -44,14 +46,7 @@ export function LoadingScreen({ onComplete, name, role }: LoadingScreenProps) {
         >
           MA
         </motion.div>
-        <div className="text-center">
-          <p className="eyebrow">Mehdi Azzam</p>
-          <p className="mt-2 text-lg text-ink">{displayName}</p>
-          <p className="text-xs text-ink-muted">{role}</p>
-        </div>
-        <div className="text-center">
-          <p className="text-sm text-ink-muted">Loading</p>
-        </div>
+        <p className="eyebrow">{role}</p>
         <motion.div
           className="h-1 w-40 overflow-hidden rounded-sm bg-line"
           initial={{ opacity: 0 }}

@@ -63,6 +63,18 @@ const skillIcons: Record<string, IconType> = {
   notion: SiNotion,
 };
 
+const featuredIcons = ["react", "typescript", "tailwindcss", "vite"] as const;
+
+const featuredSkills = featuredIcons.flatMap((icon) => {
+  for (const category of skillCategories) {
+    const match = category.items.find((item) => item.icon === icon);
+    if (match) return [match];
+  }
+  return [];
+});
+
+const featuredIconSet = new Set<string>(featuredIcons);
+
 const containerVariants = {
   hidden: { opacity: 0, y: 12 },
   visible: {
@@ -81,49 +93,65 @@ export function Skills() {
   return (
     <section id="skills" className="section-zone section-zone-muted reveal-section scroll-mt-nav">
       <div className="content-shell">
-        <span
-          className="pointer-events-none absolute -right-0 select-none font-display text-[7rem] font-semibold leading-none text-accent/[0.08] lg:text-[9rem]"
-          aria-hidden
-        >
-          04
-        </span>
         <div className="section-header max-w-xl">
           <p className="eyebrow">Skills</p>
           <div className="copper-divider" />
           <h2 className="mt-3">Tools I use</h2>
         </div>
 
+        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {featuredSkills.map((skill) => {
+            const Icon = skillIcons[skill.icon] ?? FiLink;
+            return (
+              <li
+                key={skill.label}
+                className="flex min-h-[4.25rem] items-center gap-3 rounded-sm border border-accent/40 bg-panel/70 px-3 py-3 text-sm font-medium text-ink"
+              >
+                <span className="text-accent">
+                  <Icon size={22} />
+                </span>
+                {skill.label}
+              </li>
+            );
+          })}
+        </ul>
+
         <motion.div
-          className="mt-2 flex w-full flex-col gap-8"
+          className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
         >
-          {skillCategories.map((category) => (
-            <div key={category.title}>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
-                {category.title}
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {category.items.map((skill) => {
-                  const Icon = skillIcons[skill.icon] ?? FiLink;
-                  return (
-                    <motion.li
-                      key={skill.label}
-                      variants={itemVariants}
-                      className="inline-flex items-center gap-2 rounded-sm border border-line bg-panel/50 px-3 py-2 text-sm text-ink transition hover:border-accent/40"
-                    >
-                      <span className="text-accent">
-                        <Icon size={16} />
-                      </span>
-                      {skill.label}
-                    </motion.li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+          {skillCategories.map((category) => {
+            const items = category.items.filter((skill) => !featuredIconSet.has(skill.icon));
+            if (items.length === 0) return null;
+
+            return (
+              <div key={category.title}>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-accent">
+                  {category.title}
+                </p>
+                <ul className="flex flex-wrap gap-1.5">
+                  {items.map((skill) => {
+                    const Icon = skillIcons[skill.icon] ?? FiLink;
+                    return (
+                      <motion.li
+                        key={skill.label}
+                        variants={itemVariants}
+                        className="inline-flex min-h-9 items-center gap-1.5 rounded-sm border border-line bg-panel/50 px-2.5 py-1 text-[13px] text-ink"
+                      >
+                        <span className="text-accent">
+                          <Icon size={14} />
+                        </span>
+                        {skill.label}
+                      </motion.li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

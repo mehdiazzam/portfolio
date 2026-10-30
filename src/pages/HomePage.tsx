@@ -1,3 +1,4 @@
+import { About } from "../sections/About";
 import { IntroBoard } from "../sections/IntroBoard";
 import { Contact } from "../sections/Contact";
 import { Projects } from "../sections/Projects";
@@ -8,6 +9,7 @@ export function HomePage() {
     <main id="main-content">
       <IntroBoard />
       <Projects />
+      <About />
       <Skills />
       <Contact />
     </main>

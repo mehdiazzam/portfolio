@@ -28,7 +28,7 @@ export function Footer() {
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={item.label}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-line text-ink-muted transition hover:border-accent hover:text-accent"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-line text-ink-muted transition hover:border-accent hover:text-accent"
               >
                 <Icon size={16} strokeWidth={1.75} />
               </a>

@@ -1,6 +1,10 @@
 import { ArrowUpRight } from "lucide-react";
 import { content } from "../lib/content";
-import { contactLinks } from "../lib/social";
+import { contactLinks, socialLinks } from "../lib/social";
+
+const profileLinks = socialLinks.filter(
+  (link) => link.id === "github" || link.id === "linkedin",
+);
 
 export function Contact() {
   const emailLink = contactLinks.find((link) => link.id === "email")!;
@@ -11,45 +15,32 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="section-zone section-zone-muted reveal-section scroll-mt-nav"
+      className="section-zone band-contrast reveal-section scroll-mt-nav"
     >
       <div className="content-shell">
-        <span
-          className="pointer-events-none absolute -right-0 select-none font-display text-[7rem] font-semibold leading-none text-accent/[0.08] lg:text-[9rem]"
-          aria-hidden
-        >
-          05
-        </span>
-        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[0.4fr_0.6fr] lg:items-start lg:gap-10">
-          <div className="section-header flex flex-col gap-6">
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[0.42fr_0.58fr] lg:items-start lg:gap-12">
+          <div className="section-header flex flex-col gap-5">
             <p className="eyebrow">Contact</p>
             <div className="copper-divider" />
             <h2>{content.contact.headline}</h2>
             <p className="max-w-md text-base">{content.contact.subline}</p>
+            <p className="text-sm">{content.contact.responseTime}</p>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <a
-              href={emailLink.href}
-              className="group accent-bar flex flex-col gap-4 rounded-sm border border-line bg-panel/60 p-6 transition hover:border-accent/40 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <div className="flex items-start gap-4">
-                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-line bg-panel text-accent">
-                  <EmailIcon size={20} strokeWidth={1.75} />
+          <div className="flex flex-col gap-3">
+            <a href={emailLink.href} className="contrast-row flex-wrap">
+              <span className="contrast-icon">
+                <EmailIcon size={20} strokeWidth={1.75} />
+              </span>
+              <span className="flex min-w-0 flex-1 flex-col gap-1">
+                <span className="text-xs uppercase tracking-[0.22em] text-accent">
+                  {emailLink.label}
                 </span>
-                <div className="flex flex-col gap-1">
-                  <p className="text-xs uppercase tracking-[0.22em] text-accent">
-                    {emailLink.label}
-                  </p>
-                  <p className="break-all text-base font-medium text-ink">
-                    {emailLink.handle}
-                  </p>
-                  <p className="text-sm text-ink-muted">
-                    {content.contact.responseTime}
-                  </p>
-                </div>
-              </div>
-              <span className="inline-flex items-center gap-2 self-start text-sm font-medium text-accent sm:self-center">
+                <span className="contrast-strong break-all text-base font-medium">
+                  {emailLink.handle}
+                </span>
+              </span>
+              <span className="inline-flex min-h-11 w-full items-center justify-end gap-1 text-sm font-medium text-accent sm:w-auto">
                 {content.contact.emailCta}
                 <ArrowUpRight size={16} />
               </span>
@@ -59,24 +50,47 @@ export function Contact() {
               href={whatsappLink.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-3 rounded-sm border border-line bg-panel/40 px-4 py-4 transition hover:border-accent/40"
+              className="contrast-row"
             >
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-line text-accent">
-                <WhatsAppIcon size={18} />
+              <span className="contrast-icon">
+                <WhatsAppIcon size={20} />
               </span>
-              <span className="flex min-w-0 flex-1 flex-col">
-                <span className="text-sm font-medium text-ink">
+              <span className="flex min-w-0 flex-1 flex-col gap-1">
+                <span className="text-xs uppercase tracking-[0.22em] text-accent">
                   {whatsappLink.label}
                 </span>
-                <span className="truncate text-xs text-ink-muted">
+                <span className="contrast-strong truncate text-base font-medium">
                   {whatsappLink.handle}
                 </span>
               </span>
-              <ArrowUpRight
-                size={16}
-                className="shrink-0 text-ink-muted transition group-hover:text-accent"
-              />
+              <ArrowUpRight size={18} className="shrink-0 text-accent" />
             </a>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {profileLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="contrast-row"
+                  >
+                    <span className="contrast-icon">
+                      <Icon size={18} />
+                    </span>
+                    <span className="flex min-w-0 flex-1 flex-col">
+                      <span className="text-sm font-medium contrast-strong">
+                        {link.label}
+                      </span>
+                      <span className="truncate text-xs">{link.handle}</span>
+                    </span>
+                    <ArrowUpRight size={16} className="shrink-0 text-accent" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

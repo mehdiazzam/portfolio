@@ -4,6 +4,8 @@ import { useActiveSection } from "../hooks/useActiveSection";
 import { isNavItemActive, navItems, scrollToSection } from "../lib/navigation";
 import type { MouseEvent } from "react";
 
+const cvHref = `${import.meta.env.BASE_URL}Mehdi_Azzam.pdf`;
+
 export function Navbar() {
   const activeSection = useActiveSection();
 
@@ -20,16 +22,21 @@ export function Navbar() {
           <a
             href="#hero"
             onClick={(event) => handleNavClick(event, "#hero")}
-            className="absolute left-4 font-display text-lg font-semibold tracking-tight text-accent"
+            className="absolute left-4 flex min-h-11 items-center gap-2"
             aria-label="Back to home"
           >
-            Portfolio
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-accent/50 font-display text-sm font-semibold text-accent">
+              MA
+            </span>
+            <span className="font-display text-base font-semibold tracking-tight text-ink">
+              Mehdi
+            </span>
           </a>
 
           <div className="flex gap-2">
-            <ThemeToggle className="mobile-icon-btn" />
+            <ThemeToggle compact className="mobile-icon-btn" />
             <a
-              href={`${import.meta.env.BASE_URL}Mehdi_azzam.docx`}
+              href={cvHref}
               download
               aria-label="Download CV"
               className="mobile-icon-btn text-accent"
@@ -46,9 +53,14 @@ export function Navbar() {
           <a
             href="#hero"
             onClick={(event) => handleNavClick(event, "#hero")}
-            className="font-display text-2xl font-semibold tracking-tight text-accent"
+            className="flex items-center gap-3"
           >
-            Portfolio
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-accent/50 font-display text-lg font-semibold text-accent">
+              MA
+            </span>
+            <span className="font-display text-2xl font-semibold tracking-tight text-ink">
+              Mehdi
+            </span>
           </a>
 
           <nav className="flex flex-col gap-1" aria-label="Primary">
@@ -74,7 +86,7 @@ export function Navbar() {
         <div className="flex flex-col gap-3 px-6 py-6">
           <ThemeToggle className="rounded-sm border border-line px-3 py-2 text-ink-muted transition hover:border-accent hover:text-accent" />
           <a
-            href={`${import.meta.env.BASE_URL}Mehdi_Azzam_CV.docx`}
+            href={cvHref}
             download
             className="inline-flex items-center justify-center gap-2 rounded-sm border border-accent px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent"
           >

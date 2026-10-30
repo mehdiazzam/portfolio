@@ -3,9 +3,10 @@ import { useTheme } from "../lib/theme";
 
 type ThemeToggleProps = {
   className?: string;
+  compact?: boolean;
 };
 
-export function ThemeToggle({ className }: ThemeToggleProps) {
+export function ThemeToggle({ className, compact = false }: ThemeToggleProps) {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
 
@@ -19,7 +20,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     >
       <span className="inline-flex items-center justify-center gap-2">
         {isDark ? <Sun size={16} strokeWidth={1.75} /> : <Moon size={16} strokeWidth={1.75} />}
-        <span className="text-xs uppercase tracking-[0.22em] hidden sm:inline">
+        <span className={compact ? "sr-only" : "hidden text-xs uppercase tracking-[0.22em] sm:inline"}>
           {isDark ? "Light" : "Dark"}
         </span>
       </span>

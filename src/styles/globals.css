@@ -50,12 +50,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-height) + var(--safe-top) + 0.75rem);
+  scroll-padding-bottom: calc(var(--bottom-nav-height) + var(--safe-bottom) + 0.75rem);
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 @media (min-width: 1024px) {
   html {
     scroll-padding-top: 1.5rem;
+    scroll-padding-bottom: 1.5rem;
   }
 }
 
@@ -238,11 +240,21 @@ body::after {
   }
 
   .mobile-bottom-nav-item {
-    @apply flex min-h-[44px] flex-col items-center justify-center gap-0.5 rounded-sm px-1 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] text-ink-muted transition active:scale-[0.96];
+    @apply relative flex min-h-[44px] flex-col items-center justify-center gap-1 rounded-sm px-1 py-1.5 text-[11px] font-medium uppercase tracking-[0.08em] text-ink-muted transition active:scale-[0.96];
   }
 
   .mobile-bottom-nav-item.is-active {
     @apply text-accent;
+  }
+
+  .mobile-bottom-nav-item.is-active::before {
+    content: '';
+    position: absolute;
+    top: 0.3rem;
+    width: 1.15rem;
+    height: 2px;
+    border-radius: 999px;
+    background: hsl(var(--color-accent));
   }
 
   .mobile-bottom-nav-item.is-active span {
@@ -290,6 +302,52 @@ body::after {
     border-top: 1px solid hsl(var(--color-line) / 0.55);
     border-bottom: 1px solid hsl(var(--color-line) / 0.55);
     box-shadow: inset 0 1px 0 hsl(var(--color-accent) / 0.04);
+  }
+
+  .band-contrast {
+    background: hsl(var(--color-ink));
+    color: hsl(var(--color-canvas));
+  }
+
+  .band-contrast h1,
+  .band-contrast h2,
+  .band-contrast h3,
+  .band-contrast h4,
+  .band-contrast .contrast-strong {
+    color: hsl(var(--color-canvas));
+  }
+
+  .band-contrast p {
+    color: hsl(var(--color-canvas) / 0.72);
+  }
+
+  .contrast-row {
+    display: flex;
+    min-height: 4.75rem;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.125rem;
+    border: 1px solid hsl(var(--color-canvas) / 0.16);
+    background: hsl(var(--color-canvas) / 0.05);
+    padding: 1rem 1.1rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .contrast-row:hover {
+    border-color: hsl(var(--color-accent) / 0.75);
+    background: hsl(var(--color-canvas) / 0.08);
+  }
+
+  .contrast-icon {
+    display: inline-flex;
+    height: 2.75rem;
+    width: 2.75rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.125rem;
+    border: 1px solid hsl(var(--color-canvas) / 0.16);
+    color: hsl(var(--color-accent));
   }
 
   .section-header {

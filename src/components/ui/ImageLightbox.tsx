@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type TouchEvent } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { ProjectImage } from "../../lib/projects";
 
@@ -19,6 +19,7 @@ export function ImageLightbox({
 }: ImageLightboxProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
+  const gesture = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -82,6 +83,26 @@ export function ImageLightbox({
   const previousIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
   const nextIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
 
+  const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    gesture.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const start = gesture.current;
+    gesture.current = null;
+    if (!start || images.length < 2) return;
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+    onNavigate(deltaX > 0 ? previousIndex : nextIndex);
+  };
+
   return (
     <div
       className="fixed inset-0 z-[120] flex items-center justify-center bg-ink/85 p-4 backdrop-blur-md"
@@ -108,14 +129,18 @@ export function ImageLightbox({
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-line bg-panel text-ink transition hover:border-accent hover:text-accent"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-line bg-panel text-ink transition hover:border-accent hover:text-accent"
             aria-label="Close image preview"
           >
             <X size={18} />
           </button>
         </div>
 
-        <div className="relative flex flex-1 items-center justify-center bg-panel/40 px-4 py-4 sm:px-6 sm:py-6">
+        <div
+          className="relative flex flex-1 touch-pan-y items-center justify-center bg-panel/40 px-4 py-4 sm:px-6 sm:py-6"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
           {images.length > 1 ? (
             <button
               type="button"

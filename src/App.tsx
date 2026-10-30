@@ -71,7 +71,13 @@ function App() {
               />
             ) : null}
           </AnimatePresence>
-          <div className="relative z-10 lg:pl-64">
+          <div
+            className={`relative z-10 ${
+              route.type === "project"
+                ? ""
+                : "pb-[calc(var(--bottom-nav-height)+var(--safe-bottom))] lg:pb-0 lg:pl-64"
+            }`}
+          >
             {route.type !== "project" ? (
               <>
                 <Navbar />

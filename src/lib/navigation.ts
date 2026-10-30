@@ -10,10 +10,14 @@ export const navItems: { id: SectionId; label: string; shortLabel: string; href:
 
 export function isNavItemActive(activeSection: SectionId, id: SectionId): boolean {
   if (id === "about") {
-    return activeSection === "about" || activeSection === "education";
+    return (
+      activeSection === "about" ||
+      activeSection === "education" ||
+      activeSection === "experience"
+    );
   }
   if (id === "hero") {
-    return activeSection === "hero" || activeSection === "experience";
+    return activeSection === "hero";
   }
   return activeSection === id;
 }
