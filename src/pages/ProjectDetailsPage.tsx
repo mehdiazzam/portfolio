@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { ArrowLeft, ArrowRight, Expand, ExternalLink } from "lucide-react";
-import { SiGithub } from "react-icons/si";
+import { SiGithub, SiGitlab } from "react-icons/si";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { ImageLightbox } from "../components/ui/ImageLightbox";
 import type { Project, ProjectImage } from "../lib/projects";
@@ -69,6 +69,11 @@ function ShotFigure({
         <img
           src={image.src}
           alt={image.alt}
+          style={
+            image.objectPosition
+              ? { objectPosition: image.objectPosition }
+              : undefined
+          }
           className="aspect-[16/10] w-full object-cover"
         />
         <span className="absolute bottom-3 right-3 inline-flex min-h-11 items-center gap-2 rounded-sm bg-accent px-3 text-xs font-semibold uppercase tracking-[0.14em] text-canvas">
@@ -155,6 +160,11 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
                 <img
                   src={coverSrc}
                   alt={`${project.title} cover`}
+                  style={
+                    project.images[0]?.objectPosition
+                      ? { objectPosition: project.images[0].objectPosition }
+                      : undefined
+                  }
                   className="aspect-[16/10] w-full object-cover"
                 />
               </div>
@@ -194,9 +204,14 @@ export function ProjectDetailsPage({ project }: ProjectDetailsPageProps) {
                     target="_blank"
                     rel="noreferrer"
                     className="btn-ghost inline-flex items-center justify-center gap-2"
+                    aria-label={`${project.title} on ${project.repo.includes("gitlab.com") ? "GitLab" : "GitHub"}`}
                   >
                     View Code
-                    <SiGithub size={16} />
+                    {project.repo.includes("gitlab.com") ? (
+                      <SiGitlab size={16} />
+                    ) : (
+                      <SiGithub size={16} />
+                    )}
                   </a>
                 ) : null}
               </div>

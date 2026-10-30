@@ -7,7 +7,7 @@ import {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { SiGithub } from "react-icons/si";
+import { SiGithub, SiGitlab } from "react-icons/si";
 import { projects, type Project } from "../lib/projects";
 import { getProjectRoute, navigateToRoute } from "../routes/projectRoutes";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
@@ -53,9 +53,13 @@ function ProjectActions({
           target="_blank"
           rel="noreferrer"
           className="btn-ghost inline-flex items-center gap-2"
-          aria-label={`${project.title} on GitHub`}
+          aria-label={`${project.title} on ${project.repo.includes("gitlab.com") ? "GitLab" : "GitHub"}`}
         >
-          <SiGithub size={16} />
+          {project.repo.includes("gitlab.com") ? (
+            <SiGitlab size={16} />
+          ) : (
+            <SiGithub size={16} />
+          )}
           Code
         </a>
       ) : null}
@@ -83,6 +87,11 @@ function ProjectPreview({
         <img
           src={coverSrcFor(project)}
           alt={`${project.title} preview`}
+          style={
+            project.images[0]?.objectPosition
+              ? { objectPosition: project.images[0].objectPosition }
+              : undefined
+          }
           className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
         />
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/75 via-black/30 to-transparent p-4 sm:p-5">

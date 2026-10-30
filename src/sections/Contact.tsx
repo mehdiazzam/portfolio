@@ -15,7 +15,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="section-zone band-contrast reveal-section scroll-mt-nav"
+      className="section-zone reveal-section scroll-mt-nav"
     >
       <div className="content-shell">
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[0.42fr_0.58fr] lg:items-start lg:gap-12">
@@ -28,15 +28,15 @@ export function Contact() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <a href={emailLink.href} className="contrast-row flex-wrap">
-              <span className="contrast-icon">
+            <a href={emailLink.href} className="contact-row flex-wrap">
+              <span className="contact-icon">
                 <EmailIcon size={20} strokeWidth={1.75} />
               </span>
               <span className="flex min-w-0 flex-1 flex-col gap-1">
                 <span className="text-xs uppercase tracking-[0.22em] text-accent">
                   {emailLink.label}
                 </span>
-                <span className="contrast-strong break-all text-base font-medium">
+                <span className="break-all text-base font-medium text-ink">
                   {emailLink.handle}
                 </span>
               </span>
@@ -50,16 +50,16 @@ export function Contact() {
               href={whatsappLink.href}
               target="_blank"
               rel="noreferrer"
-              className="contrast-row"
+              className="contact-row"
             >
-              <span className="contrast-icon">
+              <span className="contact-icon">
                 <WhatsAppIcon size={20} />
               </span>
               <span className="flex min-w-0 flex-1 flex-col gap-1">
                 <span className="text-xs uppercase tracking-[0.22em] text-accent">
                   {whatsappLink.label}
                 </span>
-                <span className="contrast-strong truncate text-base font-medium">
+                <span className="truncate text-base font-medium text-ink">
                   {whatsappLink.handle}
                 </span>
               </span>
@@ -75,16 +75,16 @@ export function Contact() {
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="contrast-row"
+                    className="contact-row"
                   >
-                    <span className="contrast-icon">
+                    <span className="contact-icon">
                       <Icon size={18} />
                     </span>
                     <span className="flex min-w-0 flex-1 flex-col">
-                      <span className="text-sm font-medium contrast-strong">
+                      <span className="text-sm font-medium text-ink">
                         {link.label}
                       </span>
-                      <span className="truncate text-xs">{link.handle}</span>
+                      <span className="truncate text-xs text-ink-muted">{link.handle}</span>
                     </span>
                     <ArrowUpRight size={16} className="shrink-0 text-accent" />
                   </a>

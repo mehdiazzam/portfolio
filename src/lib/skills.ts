@@ -43,21 +43,15 @@ export const skillCategories: SkillCategory[] = [
     title: "Backend basics",
     items: [
       { label: "Node.js", icon: "nodejs" },
-      { label: "Express.js", icon: "express" },
       { label: "REST API", icon: "restapi" },
       { label: "Authentication", icon: "auth" },
-      { label: "JWT", icon: "jwt" },
-      { label: "CRUD APIs", icon: "crud" },
     ],
   },
   {
     title: "Data",
     items: [
       { label: "Firebase", icon: "firebase" },
-      { label: "MongoDB", icon: "mongodb" },
       { label: "PostgreSQL", icon: "postgresql" },
-      { label: "MySQL", icon: "mysql" },
-      { label: "Prisma", icon: "prisma" },
       { label: "Python", icon: "python" },
     ],
   },

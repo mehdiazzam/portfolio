@@ -2,6 +2,7 @@ export interface ProjectImage {
   src: string;
   alt: string;
   caption: string;
+  objectPosition?: string;
 }
 
 export interface Project {
@@ -21,6 +22,171 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: "pharmalink",
+    title: "PharmaLink",
+    summary: "Clinical supply desk connecting pharmacies and warehouses.",
+    description:
+      "PharmaLink is the frontend for a bilingual supply network: pharmacies find stock and place orders, warehouses approve and fulfill them, and both sides keep invoices, offers, and chat on the same record.",
+    overview: [
+      "The product is split into pharmacy, warehouse, and admin workspaces, with a public landing page that explains the path from request to delivery before anyone signs in.",
+      "English and Arabic are first-class. The interface flips to RTL, and day-to-day flows — explore, orders, offers, invoices, and chat — stay available in both languages.",
+    ],
+    challenge:
+      "Give pharmacies and warehouses one clear workspace for stock, orders, and billing without collapsing three different jobs into a single generic dashboard.",
+    decisions: [
+      "Role-based routes for pharmacy, warehouse, and admin, with lazy-loaded pages",
+      "TanStack Query for server data and Zustand for session and UI state",
+      "i18next with a real RTL layout, not a translated skin on an LTR page",
+      "Leaflet for partner locations, and Socket.IO for chat and notifications",
+    ],
+    outcomes: [
+      "Pharmacy workspace for supplier shelves, offers, orders, invoices, stats, and chat",
+      "Warehouse workspace for inventory, incoming orders, offers, and invoices",
+      "Admin tools for partner verification and user management",
+      "Landing and sign-in that introduce the workflow in English and Arabic",
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "React Router",
+      "TanStack Query",
+      "Zustand",
+      "Tailwind CSS",
+      "i18next",
+      "Leaflet",
+      "Socket.IO",
+    ],
+    link: "http://76.13.9.191:8080/",
+    repo: "https://gitlab.com/ram-dos/pharmalink-frontend",
+    coverBackground: `url("${import.meta.env.BASE_URL}PharmaLink.png")`,
+    images: [
+      {
+        src: `${import.meta.env.BASE_URL}PharmaLink.png`,
+        alt: "PharmaLink landing page for the clinical supply desk.",
+        caption: "Landing page that introduces the supply desk before sign-in.",
+        objectPosition: "31% center",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}PharmaLink_login.png`,
+        alt: "PharmaLink sign-in for pharmacies, warehouses, and admins.",
+        caption: "One sign-in for pharmacies, warehouses, and admins.",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}PharmaLink_setup.png`,
+        alt: "PharmaLink setup step for choosing a pharmacy or warehouse role.",
+        caption: "Setup starts by choosing a pharmacy or warehouse role.",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}PharmaLink_warehouses.png`,
+        alt: "PharmaLink pharmacy view for browsing warehouse shelves.",
+        caption: "Pharmacies browse partner shelves and open a supplier to order.",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}PharmaLink_settings.png`,
+        alt: "PharmaLink account settings for language and theme.",
+        caption: "Language and theme live in account settings, including a light workspace.",
+      },
+    ],
+  },
+  {
+    id: "lilian",
+    title: "Lilian Azzam",
+    summary: "Electronic press kit for a lyric soprano.",
+    description:
+      "A cinematic press kit for Lilian Azzam: stage presence, sound bites, repertoire, and a way to inquire — structured like four movements of a performance.",
+    overview: [
+      "The site opens on a stage hero, then a first hearing of three arias, before the biography, gallery, and contact pages.",
+      "Navigation is scored as Preludio, Aria, Intermezzo, and Coda, so casting and press move through the kit the way an audience moves through a programme.",
+    ],
+    challenge:
+      "Present a singer’s voice, repertoire, and press materials without turning an electronic press kit into a generic personal site.",
+    decisions: [
+      "Opera-house palette — velvet, oxblood, and gold — with Fraunces for the name",
+      "Movement-numbered navigation instead of a standard page menu",
+      "Performance film and stills streamed from Cloudflare R2, not bundled in the app",
+      "Sound bites and a horizontal score-scroll reel for the recordings",
+    ],
+    outcomes: [
+      "A live press kit with stage, biography, gallery, and inquiry",
+      "Repertoire grouped for opera, concert, and art song",
+      "Audio and video a visitor can play without leaving the page",
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "React Router",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    link: "https://lightsalmon-lobster-679124.hostingersite.com/",
+    repo: "https://github.com/mehdiazzam/Lilian-azzam",
+    coverBackground: `url("${import.meta.env.BASE_URL}Lilian.png")`,
+    images: [
+      {
+        src: `${import.meta.env.BASE_URL}Lilian.png`,
+        alt: "Lilian Azzam stage hero with the name in gold and ivory.",
+        caption: "The stage opens on the name, the voice type, and a way to inquire.",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}Lilian_about.png`,
+        alt: "Biography page for lyric soprano Lilian Azzam.",
+        caption: "Biography and portrait sit beside the repertoire.",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}Lilian_media.png`,
+        alt: "Horizontal performance reel of Lilian Azzam arias.",
+        caption: "A swipeable film reel of performances.",
+      },
+    ],
+  },
+  {
+    id: "4traders",
+    title: "4TRADERS",
+    summary: "Arabic forex news desk with a price tape and a reading page.",
+    description:
+      "4TRADERS is a right-to-left news site for forex: a short price tape, sections for central banks, markets, analysis, and the economic calendar, and a reading page for each story.",
+    overview: [
+      "The feed opens with a featured story, then a two-column list. Categories filter that list without leaving the page, and the tape stays in place.",
+      "Pairs and prices stay in Latin digits inside the Arabic layout. The footer labels the tape as an illustrative snapshot, not a live market feed.",
+    ],
+    challenge:
+      "Make an Arabic market brief feel like a desk — tape, sections, and a reading page — without pretending a static sample is a live wire.",
+    decisions: [
+      "RTL layout with IBM Plex Sans Arabic, and JetBrains Mono for pairs and prices",
+      "A gold-on-near-black news theme instead of a generic article template",
+      "Category filters and the article view on one screen, so the tape never disappears",
+      "Static stories and a sample tape, labeled as illustrative",
+    ],
+    outcomes: [
+      "A news feed with a featured lead and category filters",
+      "A reading page for each story, with pair, time, and author",
+      "An illustrative tape for EUR/USD, GBP/USD, USD/JPY, gold, and the dollar index",
+    ],
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "daisyUI"],
+    link: "https://mehdiazzam.github.io/4Traders/",
+    repo: "https://github.com/mehdiazzam/4Traders",
+    coverBackground: `url("${import.meta.env.BASE_URL}4Traders.png")`,
+    images: [
+      {
+        src: `${import.meta.env.BASE_URL}4Traders.png`,
+        alt: "4TRADERS Arabic forex news feed with a price tape and featured story.",
+        caption: "The feed leads with a featured story under a short price tape.",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}4Traders_analysis.png`,
+        alt: "4TRADERS analysis category filtered to two forex stories.",
+        caption: "Categories filter the same list: central banks, markets, analysis, and the calendar.",
+      },
+      {
+        src: `${import.meta.env.BASE_URL}4Traders_article.png`,
+        alt: "4TRADERS article page for an EUR/USD scenario before US inflation.",
+        caption: "Each story opens into a reading page with the pair, time, and author.",
+      },
+    ],
+  },
   {
     id: "commerce",
     title: "LUXE",

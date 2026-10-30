@@ -35,7 +35,7 @@ export const content = {
     headline: "Freelance work and building my own product frontend.",
     items: [
       {
-        period: "2023 — Present",
+        period: "2024 — Present",
         role: "Freelance Frontend Developer",
         description:
           "Landing pages and client websites—responsive layouts, clear structure, and polished UI.",
@@ -44,7 +44,7 @@ export const content = {
         period: "2025 — Present",
         role: "Personal Product — Frontend",
         description:
-          "Building the frontend for my own product. UI and interaction work still in progress.",
+          "Building the PharmaLink frontend — the supply desk pharmacies and warehouses use to order, fulfill, and invoice.",
       },
     ],
   },

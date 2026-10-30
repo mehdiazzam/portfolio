@@ -304,41 +304,24 @@ body::after {
     box-shadow: inset 0 1px 0 hsl(var(--color-accent) / 0.04);
   }
 
-  .band-contrast {
-    background: hsl(var(--color-ink));
-    color: hsl(var(--color-canvas));
-  }
-
-  .band-contrast h1,
-  .band-contrast h2,
-  .band-contrast h3,
-  .band-contrast h4,
-  .band-contrast .contrast-strong {
-    color: hsl(var(--color-canvas));
-  }
-
-  .band-contrast p {
-    color: hsl(var(--color-canvas) / 0.72);
-  }
-
-  .contrast-row {
+  .contact-row {
     display: flex;
     min-height: 4.75rem;
     align-items: center;
     gap: 1rem;
     border-radius: 0.125rem;
-    border: 1px solid hsl(var(--color-canvas) / 0.16);
-    background: hsl(var(--color-canvas) / 0.05);
+    border: 1px solid hsl(var(--color-line));
+    background: hsl(var(--color-panel) / 0.75);
     padding: 1rem 1.1rem;
     transition: border-color 0.2s ease, background-color 0.2s ease;
   }
 
-  .contrast-row:hover {
+  .contact-row:hover {
     border-color: hsl(var(--color-accent) / 0.75);
-    background: hsl(var(--color-canvas) / 0.08);
+    background: hsl(var(--color-panel));
   }
 
-  .contrast-icon {
+  .contact-icon {
     display: inline-flex;
     height: 2.75rem;
     width: 2.75rem;
@@ -346,7 +329,7 @@ body::after {
     align-items: center;
     justify-content: center;
     border-radius: 0.125rem;
-    border: 1px solid hsl(var(--color-canvas) / 0.16);
+    border: 1px solid hsl(var(--color-line));
     color: hsl(var(--color-accent));
   }
 
